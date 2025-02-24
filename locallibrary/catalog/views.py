@@ -17,7 +17,10 @@ def index(request):
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
     num_genres = Genre.objects.count()
-
+    
+    num_visits = request.session.get('num_visits', 0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
 
     context = {
         'num_books': num_books,
@@ -49,4 +52,3 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
-
