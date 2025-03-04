@@ -32,6 +32,10 @@ urlpatterns += [
     path('', RedirectView.as_view(url='catalog/', permanent=True)),
 ]
 
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+
 from django.conf import settings
 from django.conf.urls.static import static
 
